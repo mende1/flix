@@ -11,6 +11,17 @@
   </head>
 
   <body>
-    <%= yield %>
+    <header>
+        <%= image_tag("logo.png") %>
+    </header>
+    
+    <div class="content">
+      <%= yield %>
+    </div>
+
+    <footer>
+      Copyright &copy; <%= Time.now.year %>
+      <%= link_to "The Pragmatic Studio", "https://pragmaticstudio.com" %>
+    </footer>
   </body>
 </html>
