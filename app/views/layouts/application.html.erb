@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <title>Flix</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= favicon_link_tag 'placeholder.png' %>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
@@ -11,17 +12,14 @@
   </head>
 
   <body>
-    <header>
-        <%= image_tag("logo.png") %>
-    </header>
+    <%= render "layouts/header" %>
     
     <div class="content">
+      <%= render "layouts/flash" %>
+
       <%= yield %>
     </div>
 
-    <footer>
-      Copyright &copy; <%= Time.now.year %>
-      <%= link_to "The Pragmatic Studio", "https://pragmaticstudio.com" %>
-    </footer>
+    <%= render "layouts/footer" %>
   </body>
 </html>
