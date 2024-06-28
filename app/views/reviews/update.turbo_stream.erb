@@ -1,6 +1,6 @@
 <%= turbo_stream.replace @review, @review %>
 
-<%= turbo_stream.replace "movie_analytics",
+<%= turbo_stream.update "movie_analytics",
                         partial: "movies/analytics",
                         locals: { movie: @movie } %>
 
