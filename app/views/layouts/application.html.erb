@@ -13,10 +13,12 @@
 
   <body>
     <%= render "layouts/header" %>
-    
-    <div class="content">
-      <%= render "layouts/flash" %>
 
+    <div id="flashes">
+      <%= render "layouts/flash" %>
+    </div>
+
+    <div class="content">
       <%= yield %>
     </div>
 

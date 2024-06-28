@@ -1,0 +1,11 @@
+<%= turbo_stream.prepend "reviews", @review %>
+
+<%= turbo_stream.update "new_review",
+                        partial: "form",
+                        locals: {movie: @movie, review: @new_review} %>
+
+<%= turbo_stream.replace "movie_analytics",
+                        partial: "movies/analytics",
+                        locals: { movie: @movie } %>
+
+<%= render_flash_stream %>

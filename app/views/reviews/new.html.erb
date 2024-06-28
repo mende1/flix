@@ -1,0 +1,5 @@
+<h1>New review for <%= link_to @movie.title, @movie %></h1>
+
+<%= turbo_frame_tag "new_review" do %>
+  <%= render "form", movie: @movie, review: @review %>
+<% end %>

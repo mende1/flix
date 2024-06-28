@@ -1,6 +1,8 @@
 class Movie < ApplicationRecord
   RATINGS = %w[G PG PG-13 R NC-17]
 
+  has_many :reviews, dependent: :destroy
+
   validates :title, :released_on, :duration, presence: true
   validates :description, length: { minimum: 25 }
   validates :total_gross, numericality: { greater_than_or_equal_to: 0 }
@@ -24,6 +26,18 @@ class Movie < ApplicationRecord
 
   def self.recently_added
     order(created_at: :desc).limit(3)
+  end
+
+  def most_recent_reviews
+    reviews.order(created_at: :desc)
+  end
+
+  def average_stars
+    reviews.average(:stars) || 0
+  end
+
+  def percent_stars
+    (average_stars / 5.0) * 100.0
   end
 
   def flop?

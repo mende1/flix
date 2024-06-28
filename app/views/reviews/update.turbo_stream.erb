@@ -1,0 +1,7 @@
+<%= turbo_stream.replace @review, @review %>
+
+<%= turbo_stream.replace "movie_analytics",
+                        partial: "movies/analytics",
+                        locals: { movie: @movie } %>
+
+<%= render_flash_stream %>

@@ -5,7 +5,10 @@ class MoviesController < ApplicationController
     @movies = Movie.released
   end
 
-  def show; end
+  def show
+    @reviews = @movie.most_recent_reviews
+    @review = Review.new(movie: @movie)
+  end
 
   def new
     @movie = Movie.new

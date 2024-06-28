@@ -7,6 +7,9 @@
     <h2>
       <%= year_of(@movie) %> &bull; <%= @movie.rating %>
     </h2>
+    <div class="reviews" id="movie_analytics">
+      <%= render "analytics", movie: @movie %>
+    </div>
     <p>
       <%= @movie.description %>
     </p>
@@ -24,6 +27,18 @@
         <td><%= total_gross(@movie) %></td>
       </tr>
     </table>
+
+    <h1>New Review</h1>
+    <%= render "shared/errors", object: @review %>
+
+    <%= turbo_frame_tag "new_review" do %>
+      <%= render "reviews/form", movie: @movie, review: @review %>
+    <% end %>
+
+    <ul class="movie-reviews" id="reviews">
+      <h2>Reviews</h2>
+      <%= render @reviews %>
+    </ul>
   </div>
 </section>
 

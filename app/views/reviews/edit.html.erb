@@ -1,0 +1,7 @@
+<h1>Edit review for <%= link_to @movie.title, @movie %></h1>
+
+<%= turbo_frame_tag @review do %>
+  <div class="edit">
+    <%= render "form", movie: @movie, review: @review %>
+  </div>
+<% end %>
