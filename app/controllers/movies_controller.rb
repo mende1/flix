@@ -2,7 +2,7 @@ class MoviesController < ApplicationController
   before_action :set_movie_id, only: %w[show edit update destroy]
 
   def index
-    @movies = Movie.released
+    @movies = Movie.released.with_average_stars
   end
 
   def show

@@ -16,6 +16,12 @@ class Movie < ApplicationRecord
     where('released_on < ?', Time.now).order(released_on: :desc)
   end
 
+  def self.with_average_stars
+    left_joins(:reviews)
+      .group("movies.id")
+      .select("movies.*, AVG(reviews.stars) as average_stars")
+  end
+
   def self.hits
     where(total_gross: 300_000_000..).order(total_gross: :desc)
   end
@@ -32,12 +38,8 @@ class Movie < ApplicationRecord
     reviews.order(created_at: :desc)
   end
 
-  def average_stars
-    reviews.average(:stars) || 0
-  end
-
-  def percent_stars
-    (average_stars / 5.0) * 100.0
+  def average_stars_by_movie
+    @average_stars_by_movie ||= reviews.average(:stars) || 0
   end
 
   def flop?

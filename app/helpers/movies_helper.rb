@@ -7,11 +7,11 @@ module MoviesHelper
     movie.released_on.year
   end
 
-  def average_stars(movie)
-    if movie.average_stars.zero?
-      content_tag(:strong, "No reviews")
+  def format_stars(average_stars)
+    if average_stars
+      render "shared/stars", percent: (average_stars / 5.0) * 100.0
     else
-      render "shared/stars", percent: movie.percent_stars
+      content_tag(:strong, "No reviews")
     end
   end
 end
