@@ -54,8 +54,19 @@
     </ul>
   </div>
 
-  <aside id="fans">
-    <%= render "fans", movie: @movie %>
+  <aside>
+    <div id="fans">
+      <%= render "fans", movie: @movie %>
+    </div>
+    
+    <% if @genres.present? %>
+      <h4>Genres</h4>
+      <ul>
+        <% @genres.each do |g| %>
+          <li><%= g.name %></li>
+        <% end %>
+      </ul>
+    <% end %>
   </aside>
 </section>
 
