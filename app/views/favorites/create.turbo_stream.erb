@@ -1,0 +1,7 @@
+<%= turbo_stream.update "fave_button",
+                        partial: "favorites/button",
+                        locals: { movie: @movie, favorite: @favorite } %>
+
+<%= turbo_stream.update "fans",
+                        partial: "movies/fans",
+                        locals: { movie: @movie } %>

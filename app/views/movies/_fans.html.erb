@@ -1,0 +1,10 @@
+<% if movie.fans.present? %>
+  <h4>Fans</h4>
+  <ul>
+    <% movie.fans.each do |user| %>
+      <li>
+        <%= link_to user.name, user %>
+      </li>
+    <% end %>
+  </ul>
+<% end %>

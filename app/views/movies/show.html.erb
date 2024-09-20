@@ -3,6 +3,12 @@
 <section class="movie-details">
   <div class="image">
     <%= image_tag @movie.image_file_name %>
+
+    <% if current_user %>
+      <div id="fave_button">
+        <%= render "favorites/button", movie: @movie, favorite: @favorite %>
+      </div>
+    <% end %>
   </div>
   <div class="details">
     <h1><%= @movie.title %></h1>
@@ -48,17 +54,8 @@
     </ul>
   </div>
 
-  <aside>
-    <% if @fans.present? %>
-      <h4>Fans</h4>
-      <ul>
-        <% @fans.each do |user| %>
-          <li>
-            <%= link_to user.name, user %>
-          </li>
-        <% end %>
-      </ul>
-    <% end %>
+  <aside id="fans">
+    <%= render "fans", movie: @movie %>
   </aside>
 </section>
 
