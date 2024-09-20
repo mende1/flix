@@ -18,7 +18,7 @@ class GenresController < ApplicationController
 
     if @genre.save
       flash[:notice] = "New genre successfully created!"
-      redirect_to genres_path
+      redirect_to @genre
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class GenresController < ApplicationController
   def update
     if @genre.update(genre_params)
       flash[:notice] = "Genre successfully updated!"
-      redirect_to genres_path
+      redirect_to @genre
     else
       render :edit, status: :unprocessable_entity
     end
