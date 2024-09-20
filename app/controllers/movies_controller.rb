@@ -9,6 +9,7 @@ class MoviesController < ApplicationController
   def show
     @reviews = @movie.most_recent_reviews
     @review = Review.new(movie: @movie)
+    @fans = @movie.fans
   end
 
   def new
