@@ -1,3 +1,5 @@
+<% content_for :title, "#{@movie.title} - " %>
+
 <section class="movie-details">
   <div class="image">
     <%= image_tag @movie.image_file_name %>
@@ -41,8 +43,10 @@
   </div>
 </section>
 
-<section class="admin">
-  <%= link_to "Edit", edit_movie_path(@movie), class: "button" %>
-  <%= link_to "Delete", @movie, class: "button",
-        data: { turbo_method: :delete, turbo_confirm: "Really!?" } %>
-</section>
+<% if current_user&.admin? %>
+  <section class="admin">
+    <%= link_to "Edit", edit_movie_path(@movie), class: "button" %>
+    <%= link_to "Delete", @movie, class: "button",
+          data: { turbo_method: :delete, turbo_confirm: "Really!?" } %>
+  </section>
+<% end %>

@@ -6,7 +6,9 @@ class SessionsController < ApplicationController
 
     if user&.authenticate(params[:password])
       session[:user_id] = user.id
-      redirect_to movies_path, notice: "Welcome back, #{user.name}!"
+      redirect_to (session[:intended_url] || movies_path),
+                  notice: "Welcome back, #{user.name}!"
+      session[:intended_url] = nil
     else
       flash.now[:alert] = "Invalid email/password combination!"
 
