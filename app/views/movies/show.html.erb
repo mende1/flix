@@ -30,11 +30,17 @@
       </tr>
     </table>
 
-    <h1>New Review</h1>
-    <%= render "shared/errors", object: @review %>
+    <% if current_user %>
+      <h1>New Review</h1>
+      <%= render "shared/errors", object: @review %>
 
-    <%= turbo_frame_tag "new_review" do %>
-      <%= render "reviews/form", movie: @movie, review: @review %>
+      <%= turbo_frame_tag "new_review" do %>
+        <%= render "reviews/form", movie: @movie, review: @review %>
+      <% end %>
+    <% else %>
+      <p>
+        <%= link_to "Sign in", sign_in_path %> to add a review.
+      </p>
     <% end %>
 
     <ul class="movie-reviews" id="reviews">
