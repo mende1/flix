@@ -58,12 +58,12 @@
     <div id="fans">
       <%= render "fans", movie: @movie %>
     </div>
-    
+
     <% if @genres.present? %>
       <h4>Genres</h4>
       <ul>
-        <% @genres.each do |g| %>
-          <li><%= g.name %></li>
+        <% @genres.each do |genre| %>
+          <li><%= link_to genre.name, genre %></li>
         <% end %>
       </ul>
     <% end %>
