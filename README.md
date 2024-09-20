@@ -40,7 +40,7 @@ This is a project created for learning purposes, following the **Ruby on Rails**
 4. Start the Rails server:
 
    ```bash
-   ./bin/server
+   rails s
    ```
 
 5. Visit http://localhost:3000 in your web browser.
