@@ -4,7 +4,7 @@ class FavoritesController < ApplicationController
 
   def create
     @movie.fans << current_user
-    @favorite = current_user.favorites.find_by(movie_id: params[:movie_id])
+    @favorite = current_user.favorites.find_by(movie_id: @movie.id)
   end
 
   def destroy
@@ -16,6 +16,6 @@ class FavoritesController < ApplicationController
   private
 
   def set_movie
-    @movie = Movie.find(params[:movie_id])
+    @movie = Movie.find_by!(slug: params[:movie_id])
   end
 end

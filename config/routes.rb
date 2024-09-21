@@ -5,6 +5,7 @@ Rails.application.routes.draw do
     resources :reviews
     resources :favorites
   end
+  get 'movies/filter/:filter', to: 'movies#index', as: :filtered_movies
 
   resources :genres
 

@@ -3,7 +3,7 @@ class MoviesController < ApplicationController
   before_action :set_movie_id, only: %w[show edit update destroy]
 
   def index
-    @movies = Movie.released.with_average_stars
+    @movies = Movie.send(movies_filter).with_average_stars
   end
 
   def show
@@ -48,6 +48,14 @@ class MoviesController < ApplicationController
 
   private
 
+  def movies_filter
+    if params[:filter].in? %i(upcoming recent hits flop)
+      params[:filter]
+    else
+      :released
+    end
+  end
+
   def movie_params
     params.require(:movie)
           .permit(:title, :rating, :total_gross, :description, :released_on,
@@ -55,6 +63,6 @@ class MoviesController < ApplicationController
   end
 
   def set_movie_id
-    @movie = Movie.find(params[:id])
+    @movie = Movie.find_by!(slug: params[:id])
   end
 end
