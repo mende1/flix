@@ -7,6 +7,8 @@ class Review < ApplicationRecord
   validates :stars, inclusion: { in: STARS, message: "must be between 1 and 5" }
   validates :comment, length: { minimum: 5 }
 
+  scope :past_n_days, ->(days) { where("created_at >= ?" , days.days.ago) }
+
   def self.most_recent
     order(created_at: :desc)
   end
