@@ -23,5 +23,9 @@ console_command = '/rails/bin/rails console'
   cpus = 1
 
 [deploy]
-  release_command = './bin/rails db:prepare'
-  
+  release_command = "./bin/rails db:prepare"
+
+[[statics]]
+  guest_path = "/rails/public"
+  url_prefix = "/"
+
