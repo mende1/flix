@@ -14,4 +14,8 @@ module MoviesHelper
       content_tag(:strong, "No reviews")
     end
   end
+
+  def display_icon(movie)
+    image_tag(movie.icon.attached? ? movie.icon : "placeholder.png")
+  end
 end

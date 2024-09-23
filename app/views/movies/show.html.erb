@@ -2,7 +2,7 @@
 
 <section class="movie-details">
   <div class="image">
-    <%= image_tag @movie.image_file_name %>
+    <%= display_icon(@movie) %>
 
     <% if current_user %>
       <div id="fave_button">

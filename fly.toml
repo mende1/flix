@@ -21,3 +21,7 @@ console_command = '/rails/bin/rails console'
   memory = '1gb'
   cpu_kind = 'shared'
   cpus = 1
+
+[deploy]
+  release_command = './bin/rails db:prepare'
+  

@@ -4,7 +4,7 @@
 
 <% if @movies.present? %>
   <% @movies.each do |movie| %>
-    <%= link_to image_tag(movie.image_file_name), movie %>
+    <%= link_to display_icon(movie), movie %>
   <% end %>
 <% else %>
   <p>No movies for this genre.</p>
