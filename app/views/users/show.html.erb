@@ -28,17 +28,20 @@
     <h3>Favorite Movies</h3>
     <div class="favorite-movies">
       <% @favorite_movies.each do |movie| %>
+      <div class="movie">
         <%= link_to display_icon(movie), movie %>
+        <%= movie.title %>
+      </div>
       <% end %>
     </div>
   <% end %> 
 
   <% if current_user?(@user) %>
-    <div class="actions">
+    <section class="admin">
       <%= link_to "Edit Account", edit_user_path(@user), class: "button edit" %>
       <%= link_to "Delete Account", @user,
                   data: { turbo_method: :delete, turbo_confirm: "Are you sure?" },
                   class: "button delete" %>
-    </div>
+    </section>
   <% end %>
 </section>

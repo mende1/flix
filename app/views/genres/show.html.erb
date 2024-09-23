@@ -3,9 +3,14 @@
 <h1><%= @genre.name %></h1>
 
 <% if @movies.present? %>
-  <% @movies.each do |movie| %>
-    <%= link_to display_icon(movie), movie %>
-  <% end %>
+  <div class="favorite-movies">
+    <% @movies.each do |movie| %>
+    <div class="movie">
+      <%= link_to display_icon(movie), movie %>
+      <%= movie.title %>
+    </div>
+    <% end %>
+  </div>
 <% else %>
   <p>No movies for this genre.</p>
 <% end %>
