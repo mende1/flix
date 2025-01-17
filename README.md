@@ -1,4 +1,4 @@
-# Fishing App
+# Flix - a movies system
 
 This is a project created for learning purposes, following the **Ruby on Rails** course by Pragmatic Studio. The project is built with Ruby on Rails and focuses on movies, reviews, favorites and users.
 
